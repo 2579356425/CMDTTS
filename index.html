@@ -34,19 +34,19 @@
 
 
 <h2 id="abstract">Abstract</h2>
-<p>With the non-target speaker corpus (auxiliary corpus) for model pre-training, Text-to-Speech (TTS) methods can generate high-quality speech with a limited target speaker corpus. However, this approach comes with high-quality performance and expensive training costs. To overcome the challenge, a fast and high-quality TTS method is proposed, significantly reducing training costs while maintaining the naturalness of synthesized speech. In this paper, we propose an auxiliary corpus compression algorithm ACCA that significantly reduces the training cost while the naturalness of the synthesized speech is not significantly degraded. We then use the compressed corpus to pre-train the proposed TTS model CMDTTS, which fuses phoneme and word multi-level prosody modeling components and fine-tunes the generated spectrograms using denoising diffusion probabilistic models (DDPMs). In addition, the conditional generative adversarial network (cGAN) is introduced to embed the target speaker feature and further improve speech quality using the target speaker corpus. Experiments are conducted on both Mandarin and English corpora, and the results show that the method effectively balances the model training speed and the synthesized speech quality and outperforms the state-of-the-art models.</p>
+<p>With an auxiliary corpus (non-target speaker corpus) for model pre-training, Text-to-Speech (TTS) methods can generate high-quality speech with a limited target speaker corpus. However, this approach comes with expensive training costs. To overcome the challenge, a high-quality TTS method is proposed, significantly reducing training costs while maintaining the naturalness of synthesized speech. In this paper, we propose an auxiliary corpus compression algorithm that reduces the training cost while the naturalness of the synthesized speech is not significantly degraded. We then use the compressed corpus to pre-train the proposed TTS model CMDTTS, which fuses phoneme and word multi-level prosody modeling components and denoises the generated mel-spectrograms using denoising diffusion probabilistic models (DDPMs). In addition, a fine-tuning step that the conditional generative adversarial network (cGAN) is introduced to embed the target speaker feature and improve speech quality using the target speaker corpus. Experiments are conducted on Chinese and English single speaker's corpora, and the results show that the method effectively balances the model training speed and the synthesized speech quality and outperforms the current models.</p>
 <h2><p class="toc_title">Contents</p></h2>
 <div id="toc_container">
 <ul>
-  <li><a href="#1">Performance of algorithm ACCA</a></li>
-  <li><a href="#2">Ablation studies for proposed method</a></li>
-  <li><a href="#3">Performance comparison with other methods</a></li>
+  <li><a href="#1">Performance of Auxiliary Corpus Compression Algorithm</a></li>
+  <li><a href="#2">Ablation Studies for Proposed Method</a></li>
+  <li><a href="#3">Performance Comparison with Other Methods</a></li>
 </ul>
 </div>
 <br>
 <br>
 
-<a name="1"><h2>1. Performance of algorithm ACCA</h2></a>
+<a name="1"><h2>1. Performance of Auxiliary Corpus Compression Algorithm</h2></a>
 <table>
   <thead>
     <tr>
@@ -231,19 +231,19 @@
 </table>
 <br>
 <br>
-<a name="2"><h2>2. Ablation studies for proposed method</h2></a> 
+<a name="2"><h2>2. Ablation Studies for Proposed Method</h2></a> 
 <table>
   <thead>
     <tr>
       <th style="text-align: center;"><div style="width: 110px;"></div></th>
-      <th style="text-align: center;"><div class="text-row1"><strong>B</strong></div></th>
-      <th style="text-align: center;"><div class="text-row1"><strong>B+MD</strong></div></th>
-      <th style="text-align: center;"><div class="text-row1"><strong>B+cGAN</strong></div></th>
-      <th style="text-align: center;"><div class="text-row1"><strong>B+MD+cGAN</strong></div></th>
-      <th style="text-align: center;"><div class="text-row1"><strong>B+C</strong></div></th>
-      <th style="text-align: center;"><div class="text-row1"><strong>B+C+MD</strong></div></th>
-	  <th style="text-align: center;"><div class="text-row1"><strong>B+C+cGAN</strong></div></th>
-      <th style="text-align: center;"><div class="text-row1"><strong>B+C+MD+cGAN</strong></div></th>
+      <th style="text-align: center;"><div class="text-row1"><strong>Base</strong></div></th>
+      <th style="text-align: center;"><div class="text-row1"><strong>Base+MD</strong></div></th>
+      <th style="text-align: center;"><div class="text-row1"><strong>Base+cGAN</strong></div></th>
+      <th style="text-align: center;"><div class="text-row1"><strong>Base+MD+cGAN</strong></div></th>
+      <th style="text-align: center;"><div class="text-row1"><strong>Base+C</strong></div></th>
+      <th style="text-align: center;"><div class="text-row1"><strong>Base+C+MD</strong></div></th>
+	  <th style="text-align: center;"><div class="text-row1"><strong>Base+C+cGAN</strong></div></th>
+      <th style="text-align: center;"><div class="text-row1"><strong>Base+C+MD+cGAN</strong></div></th>
     </tr>
   </thead>
   <tbody>
@@ -360,14 +360,14 @@
 </table>
 <br>
 <br>
-<a name="3"><h2>3. Contrast experiments</h2></a>
+<a name="3"><h2>3. Performance Comparison with Other Methods</h2></a>
 <table>
   <thead>
     <tr>
       <th style="text-align: center;"><div style="width: 110px;"></div></th>
       <!-- <th style="text-align: center;"><div class="text-row1"><strong>Ground Truth</strong></div></th> -->
       <th style="text-align: center;"><div class="text-row1"><strong>Tacotron2</strong></div></th>
-      <th style="text-align: center;"><div class="text-row1"><strong>TransformerTTS</strong></div></th>
+      <!-- <th style="text-align: center;"><div class="text-row1"><strong>TransformerTTS</strong></div></th> -->
       <th style="text-align: center;"><div class="text-row1"><strong>FastSpeech2</strong></div></th>
       <th style="text-align: center;"><div class="text-row1"><strong>VITS</strong></div></th>
 	  <th style="text-align: center;"><div class="text-row1"><strong>JETS</strong></div></th>
@@ -379,7 +379,7 @@
     <tr>
       <td style="width: 110px;text-align: left" rowspan="2"><strong style="color: black;">CSMSC</strong></td>
       <td style="width: 234px;text-align: left"><audio controlsList="nodownload" style="width: 234px;" src="https://anonymous.4open.science/r/CMDTTS-FB57/speech\Mandarin1\Contrast experiments\sentence5\Tacotron2.wav" controls="" preload=""></audio></td>
-      <td style="width: 234px;text-align: left"><audio controlsList="nodownload" style="width: 234px;" src="https://anonymous.4open.science/r/CMDTTS-FB57/speech\Mandarin1\Contrast experiments\sentence5\TransformerTTS.wav" controls="" preload=""></audio></td>
+      <!-- <td style="width: 234px;text-align: left"><audio controlsList="nodownload" style="width: 234px;" src="https://anonymous.4open.science/r/CMDTTS-FB57/speech\Mandarin1\Contrast experiments\sentence5\TransformerTTS.wav" controls="" preload=""></audio></td> -->
       <td style="width: 234px;text-align: left"><audio controlsList="nodownload" style="width: 234px;" src="https://anonymous.4open.science/r/CMDTTS-FB57/speech\Mandarin1\Contrast experiments\sentence5\FastSpeech2.wav" controls="" preload=""></audio></td>
       <td style="width: 234px;text-align: left"><audio controlsList="nodownload" style="width: 234px;" src="https://anonymous.4open.science/r/CMDTTS-FB57/speech\Mandarin1\Contrast experiments\sentence5\VITS.wav" controls="" preload=""></audio></td>
       <td style="width: 234px;text-align: left"><audio controlsList="nodownload" style="width: 234px;" src="https://anonymous.4open.science/r/CMDTTS-FB57/speech\Mandarin1\Contrast experiments\sentence5\JETS.wav" controls="" preload=""></audio></td>
@@ -396,7 +396,7 @@
     <tr>
       <td style="width: 110px;text-align: left" rowspan="2"><strong style="color: black;">CSMSC</strong></td>
       <td style="width: 234px;text-align: left"><audio controlsList="nodownload" style="width: 234px;" src="https://anonymous.4open.science/r/CMDTTS-FB57/speech\Mandarin1\Contrast experiments\sentence6\Tacotron2.wav" controls="" preload=""></audio></td>
-      <td style="width: 234px;text-align: left"><audio controlsList="nodownload" style="width: 234px;" src="https://anonymous.4open.science/r/CMDTTS-FB57/speech\Mandarin1\Contrast experiments\sentence6\TransformerTTS.wav" controls="" preload=""></audio></td>
+      <!-- <td style="width: 234px;text-align: left"><audio controlsList="nodownload" style="width: 234px;" src="https://anonymous.4open.science/r/CMDTTS-FB57/speech\Mandarin1\Contrast experiments\sentence6\TransformerTTS.wav" controls="" preload=""></audio></td> -->
       <td style="width: 234px;text-align: left"><audio controlsList="nodownload" style="width: 234px;" src="https://anonymous.4open.science/r/CMDTTS-FB57/speech\Mandarin1\Contrast experiments\sentence6\FastSpeech2.wav" controls="" preload=""></audio></td>
       <td style="width: 234px;text-align: left"><audio controlsList="nodownload" style="width: 234px;" src="https://anonymous.4open.science/r/CMDTTS-FB57/speech\Mandarin1\Contrast experiments\sentence6\VITS.wav" controls="" preload=""></audio></td>
       <td style="width: 234px;text-align: left"><audio controlsList="nodownload" style="width: 234px;" src="https://anonymous.4open.science/r/CMDTTS-FB57/speech\Mandarin1\Contrast experiments\sentence6\JETS.wav" controls="" preload=""></audio></td>
@@ -413,7 +413,7 @@
     <tr>
       <td style="width: 110px;text-align: left" rowspan="2"><strong style="color: black;">CSS10</strong></td>
       <td style="width: 234px;text-align: left"><audio controlsList="nodownload" style="width: 234px;" src="https://anonymous.4open.science/r/CMDTTS-FB57/speech\Mandarin2\Contrast experiments\sentence10\Tacotron2.wav" controls="" preload=""></audio></td>
-      <td style="width: 234px;text-align: left"><audio controlsList="nodownload" style="width: 234px;" src="https://anonymous.4open.science/r/CMDTTS-FB57/speech\Mandarin2\Contrast experiments\sentence10\TransformerTTS.wav" controls="" preload=""></audio></td>
+      <!-- <td style="width: 234px;text-align: left"><audio controlsList="nodownload" style="width: 234px;" src="https://anonymous.4open.science/r/CMDTTS-FB57/speech\Mandarin2\Contrast experiments\sentence10\TransformerTTS.wav" controls="" preload=""></audio></td> -->
       <td style="width: 234px;text-align: left"><audio controlsList="nodownload" style="width: 234px;" src="https://anonymous.4open.science/r/CMDTTS-FB57/speech\Mandarin2\Contrast experiments\sentence10\FastSpeech2.wav" controls="" preload=""></audio></td>
       <td style="width: 234px;text-align: left"><audio controlsList="nodownload" style="width: 234px;" src="https://anonymous.4open.science/r/CMDTTS-FB57/speech\Mandarin2\Contrast experiments\sentence10\VITS.wav" controls="" preload=""></audio></td>
       <td style="width: 234px;text-align: left"><audio controlsList="nodownload" style="width: 234px;" src="https://anonymous.4open.science/r/CMDTTS-FB57/speech\Mandarin2\Contrast experiments\sentence10\JETS.wav" controls="" preload=""></audio></td>
@@ -430,7 +430,7 @@
     <tr>
       <td style="width: 110px;text-align: left" rowspan="2"><strong style="color: black;">CSS10</strong></td>
       <td style="width: 234px;text-align: left"><audio controlsList="nodownload" style="width: 234px;" src="https://anonymous.4open.science/r/CMDTTS-FB57/speech\Mandarin2\Contrast experiments\sentence8\Tacotron2.wav" controls="" preload=""></audio></td>
-      <td style="width: 234px;text-align: left"><audio controlsList="nodownload" style="width: 234px;" src="https://anonymous.4open.science/r/CMDTTS-FB57/speech\Mandarin2\Contrast experiments\sentence8\TransformerTTS.wav" controls="" preload=""></audio></td>
+      <!-- <td style="width: 234px;text-align: left"><audio controlsList="nodownload" style="width: 234px;" src="https://anonymous.4open.science/r/CMDTTS-FB57/speech\Mandarin2\Contrast experiments\sentence8\TransformerTTS.wav" controls="" preload=""></audio></td> -->
       <td style="width: 234px;text-align: left"><audio controlsList="nodownload" style="width: 234px;" src="https://anonymous.4open.science/r/CMDTTS-FB57/speech\Mandarin2\Contrast experiments\sentence8\FastSpeech2.wav" controls="" preload=""></audio></td>
       <td style="width: 234px;text-align: left"><audio controlsList="nodownload" style="width: 234px;" src="https://anonymous.4open.science/r/CMDTTS-FB57/speech\Mandarin2\Contrast experiments\sentence8\VITS.wav" controls="" preload=""></audio></td>
       <td style="width: 234px;text-align: left"><audio controlsList="nodownload" style="width: 234px;" src="https://anonymous.4open.science/r/CMDTTS-FB57/speech\Mandarin2\Contrast experiments\sentence8\JETS.wav" controls="" preload=""></audio></td>
@@ -447,7 +447,7 @@
 	<tr>
 	 <td style="width: 110px;text-align: left" rowspan="2"><strong style="color: black;">LJSpeech</strong></td>
 	 <td style="width: 234px;text-align: left"><audio controlsList="nodownload" style="width: 234px;" src="https://anonymous.4open.science/r/CMDTTS-FB57/speech/English/Contrast experiments/sentence4/Tacotron2.wav" controls="" preload=""></audio></td>
-	 <td style="width: 234px;text-align: left"><audio controlsList="nodownload" style="width: 234px;" src="https://anonymous.4open.science/r/CMDTTS-FB57/speech/English/Contrast experiments/sentence4/TransformerTTS.wav" controls="" preload=""></audio></td>
+	 <!-- <td style="width: 234px;text-align: left"><audio controlsList="nodownload" style="width: 234px;" src="https://anonymous.4open.science/r/CMDTTS-FB57/speech/English/Contrast experiments/sentence4/TransformerTTS.wav" controls="" preload=""></audio></td> -->
 	 <td style="width: 234px;text-align: left"><audio controlsList="nodownload" style="width: 234px;" src="https://anonymous.4open.science/r/CMDTTS-FB57/speech/English/Contrast experiments/sentence4/FastSpeech2.wav" controls="" preload=""></audio></td>
 	 <td style="width: 234px;text-align: left"><audio controlsList="nodownload" style="width: 234px;" src="https://anonymous.4open.science/r/CMDTTS-FB57/speech/English/Contrast experiments/sentence4/VITS.wav" controls="" preload=""></audio></td>
 	 <td style="width: 234px;text-align: left"><audio controlsList="nodownload" style="width: 234px;" src="https://anonymous.4open.science/r/CMDTTS-FB57/speech/English/Contrast experiments/sentence4/JETS.wav" controls="" preload=""></audio></td>
@@ -464,7 +464,7 @@
 	<tr>
 	 <td style="width: 110px;text-align: left" rowspan="2"><strong style="color: black;">LJSpeech</strong></td>
 	 <td style="width: 234px;text-align: left"><audio controlsList="nodownload" style="width: 234px;" src="https://anonymous.4open.science/r/CMDTTS-FB57/speech/English/Contrast experiments/sentence5/Tacotron2.wav" controls="" preload=""></audio></td>
-	 <td style="width: 234px;text-align: left"><audio controlsList="nodownload" style="width: 234px;" src="https://anonymous.4open.science/r/CMDTTS-FB57/speech/English/Contrast experiments/sentence5/TransformerTTS.wav" controls="" preload=""></audio></td>
+	 <!-- <td style="width: 234px;text-align: left"><audio controlsList="nodownload" style="width: 234px;" src="https://anonymous.4open.science/r/CMDTTS-FB57/speech/English/Contrast experiments/sentence5/TransformerTTS.wav" controls="" preload=""></audio></td> -->
 	 <td style="width: 234px;text-align: left"><audio controlsList="nodownload" style="width: 234px;" src="https://anonymous.4open.science/r/CMDTTS-FB57/speech/English/Contrast experiments/sentence5/FastSpeech2.wav" controls="" preload=""></audio></td>
 	 <td style="width: 234px;text-align: left"><audio controlsList="nodownload" style="width: 234px;" src="https://anonymous.4open.science/r/CMDTTS-FB57/speech/English/Contrast experiments/sentence5/VITS.wav" controls="" preload=""></audio></td>
 	 <td style="width: 234px;text-align: left"><audio controlsList="nodownload" style="width: 234px;" src="https://anonymous.4open.science/r/CMDTTS-FB57/speech/English/Contrast experiments/sentence5/JETS.wav" controls="" preload=""></audio></td>
